@@ -532,3 +532,962 @@ Processing by ProductsController#index as HTML
 Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.2ms | Allocations: 5278)
 
 
+Started GET "/products" for ::1 at 2020-05-04 13:11:28 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (Duration: 15.1ms | Allocations: 9814)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 27ms (Views: 20.9ms | ActiveRecord: 0.6ms | Allocations: 16350)
+
+
+Started GET "/products/1/edit" for ::1 at 2020-05-04 13:11:30 +0530
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 4.7ms | Allocations: 3279)
+  Rendered products/edit.html.erb within layouts/application (Duration: 5.4ms | Allocations: 3688)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.2ms | Allocations: 8517)
+
+
+Started PATCH "/products/1" for ::1 at 2020-05-04 13:11:32 +0530
+Processing by ProductsController#update as HTML
+  Parameters: {"authenticity_token"=>"hPLj/R6BW6sMmIhAish3Tv5qqCnEQl2Ms/nGt+dSv2hLNghRPZk2Qd59F0wr+iD1vj3jf0H+qguAyBchlkYm/g==", "product"=>{"title"=>"Seven Mobile Apps in Seven Weeks", "description"=>"<p>\r\n<em>Native Apps, Multiple Platforms</em>\r\nAnswer the question “Can we build this for ALL the devices?” with a\r\nresounding YES. This book will help you get there with a real-world\r\nintroduction to seven platforms, whether you’re new to mobile or an\r\nexperienced developer needing to expand your options. Plus, you’ll find\r\nout which cross-platform solution makes the most sense for your needs.\r\n</p>", "image_url"=>"image1.jpg", "price"=>"26.0"}, "commit"=>"Update Product", "id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+  [1m[36mProduct Update (0.3ms)[0m  [1m[33mUPDATE "products" SET "description" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["description", "<p>\r\n<em>Native Apps, Multiple Platforms</em>\r\nAnswer the question “Can we build this for ALL the devices?” with a\r\nresounding YES. This book will help you get there with a real-world\r\nintroduction to seven platforms, whether you’re new to mobile or an\r\nexperienced developer needing to expand your options. Plus, you’ll find\r\nout which cross-platform solution makes the most sense for your needs.\r\n</p>"], ["updated_at", "2020-05-04 07:41:32.732564"], ["id", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+  [1m[35m (70.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+Redirected to http://localhost:3000/products/1
+Completed 302 Found in 81ms (ActiveRecord: 70.8ms | Allocations: 4417)
+
+
+Started GET "/products/1" for ::1 at 2020-05-04 13:11:32 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 324)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 7ms (Views: 4.2ms | ActiveRecord: 0.2ms | Allocations: 4717)
+
+
+Started GET "/products/1/edit" for ::1 at 2020-05-04 13:11:34 +0530
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 4.3ms | Allocations: 1170)
+  Rendered products/edit.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1288)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 0.2ms | Allocations: 5537)
+
+
+Started PATCH "/products/1" for ::1 at 2020-05-04 13:11:39 +0530
+Processing by ProductsController#update as HTML
+  Parameters: {"authenticity_token"=>"Gilh/BTeFiVtt51qhOVP0DY23h/X7F7nYlvj+f0dgQzV7YpQN8Z7z79SAmYl1xhrdmGVSVJQqWBRajJvjAkYmg==", "product"=>{"title"=>"Seven Mobile Apps in Seven Weeks", "description"=>"<p>\r\n<em>Native Apps, Multiple Platforms</em>\r\nAnswer the question “Can we build this for ALL the devices?” with a\r\nresounding YES. This book will help you get there with a real-world\r\nintroduction to seven platforms, whether you’re new to mobile or an\r\nexperienced developer needing to expand your options. Plus, you’ll find\r\nout which cross-platform solution makes the most sense for your needs.\r\n</p>", "image_url"=>"image1.jpg", "price"=>""}, "commit"=>"Update Product", "id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+  [1m[36mProduct Update (0.3ms)[0m  [1m[33mUPDATE "products" SET "price" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["price", nil], ["updated_at", "2020-05-04 07:41:39.253480"], ["id", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+  [1m[35m (42.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+Redirected to http://localhost:3000/products/1
+Completed 302 Found in 51ms (ActiveRecord: 42.5ms | Allocations: 4139)
+
+
+Started GET "/products/1" for ::1 at 2020-05-04 13:11:39 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 89)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 0.2ms | Allocations: 4347)
+
+
+Started GET "/products/1/edit" for ::1 at 2020-05-04 13:12:17 +0530
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 1.7ms | Allocations: 1222)
+  Rendered products/edit.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1341)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 14.7ms | ActiveRecord: 0.6ms | Allocations: 10882)
+
+
+Started PATCH "/products/1" for ::1 at 2020-05-04 13:12:18 +0530
+Processing by ProductsController#update as HTML
+  Parameters: {"authenticity_token"=>"r/I0iOwP2OfV06O+b+klJbaTxEa1Jf7ElCZB77h1TpxgNt8kzxe1DQc2PLLO23Ke9sSPEDCZCUOnF5B5yWHXCg==", "product"=>{"title"=>"Seven Mobile Apps in Seven Weeks", "description"=>"<p>\r\n<em>Native Apps, Multiple Platforms</em>\r\nAnswer the question “Can we build this for ALL the devices?” with a\r\nresounding YES. This book will help you get there with a real-world\r\nintroduction to seven platforms, whether you’re new to mobile or an\r\nexperienced developer needing to expand your options. Plus, you’ll find\r\nout which cross-platform solution makes the most sense for your needs.\r\n</p>", "image_url"=>"image1.jpg", "price"=>""}, "commit"=>"Update Product", "id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 3.8ms | Allocations: 1338)
+  Rendered products/edit.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1454)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 7.8ms | ActiveRecord: 0.2ms | Allocations: 7320)
+
+
+Started PATCH "/products/1" for ::1 at 2020-05-04 13:12:27 +0530
+Processing by ProductsController#update as HTML
+  Parameters: {"authenticity_token"=>"dCbRsKZ8dzrJ0iWBgrBD1vTH3M5OEg6XrHapw4kG9ELWWmpfcMmQLqZcpdSwZLTsmEp8bM7mOSj7gbDg+pjsBg==", "product"=>{"title"=>"Seven Mobile Apps in Seven Weeks", "description"=>"<p>\r\n<em>Native Apps, Multiple Platforms</em>\r\nAnswer the question “Can we build this for ALL the devices?” with a\r\nresounding YES. This book will help you get there with a real-world\r\nintroduction to seven platforms, whether you’re new to mobile or an\r\nexperienced developer needing to expand your options. Plus, you’ll find\r\nout which cross-platform solution makes the most sense for your needs.\r\n</p>", "image_url"=>"image1.jpg", "price"=>"1.0"}, "commit"=>"Update Product", "id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+  [1m[36mProduct Update (0.2ms)[0m  [1m[33mUPDATE "products" SET "price" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["price", 1.0], ["updated_at", "2020-05-04 07:42:27.189139"], ["id", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+  [1m[35m (121.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+Redirected to http://localhost:3000/products/1
+Completed 302 Found in 131ms (ActiveRecord: 122.3ms | Allocations: 4300)
+
+
+Started GET "/products/1" for ::1 at 2020-05-04 13:12:27 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 100)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.2ms | Allocations: 4358)
+
+
+Started GET "/products/1" for ::1 at 2020-05-04 13:12:34 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 94)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 5.3ms | ActiveRecord: 0.2ms | Allocations: 4326)
+
+
+Started GET "/products/1" for ::1 at 2020-05-04 13:12:35 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 94)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 0.2ms | Allocations: 4332)
+
+
+Started GET "/products" for ::1 at 2020-05-04 13:12:36 +0530
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1648)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.2ms | Allocations: 5300)
+
+
+Started GET "/products/1/edit" for ::1 at 2020-05-04 13:12:38 +0530
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 3.6ms | Allocations: 1167)
+  Rendered products/edit.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1283)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 7.1ms | ActiveRecord: 0.2ms | Allocations: 5516)
+
+
+Started GET "/products/1" for ::1 at 2020-05-04 13:12:41 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 94)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 8.6ms | ActiveRecord: 0.2ms | Allocations: 4330)
+
+
+Started GET "/products" for ::1 at 2020-05-04 13:12:46 +0530
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1624)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.2ms | Allocations: 5281)
+
+
+Started GET "/products/1/edit" for ::1 at 2020-05-04 13:17:06 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 1.8ms | Allocations: 1233)
+  Rendered products/edit.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1352)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 5.6ms | ActiveRecord: 0.6ms | Allocations: 11030)
+
+
+Started PATCH "/products/1" for ::1 at 2020-05-04 13:17:11 +0530
+Processing by ProductsController#update as HTML
+  Parameters: {"authenticity_token"=>"scL6DJIWZZtk9jcKLMUZkgsGWTdw98S4AqueX/sm27V+BhGgsQ4IcbYTqAaN904pS1ESYfVLMz8xmk/JijJCIw==", "product"=>{"title"=>"Seven Mobile Apps in Seven Weeks", "description"=>"<p>\r\n<em>Native Apps, Multiple Platforms</em>\r\nAnswer the question “Can we build this for ALL the devices?” with a\r\nresounding YES. This book will help you get there with a real-world\r\nintroduction to seven platforms, whether you’re new to mobile or an\r\nexperienced developer needing to expand your options. Plus, you’ll find\r\nout which cross-platform solution makes the most sense for your needs.\r\n</p>", "image_url"=>"image1.", "price"=>"1.0"}, "commit"=>"Update Product", "id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? AND "products"."id" != ? LIMIT ?[0m  [["title", "Seven Mobile Apps in Seven Weeks"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 1.9ms | Allocations: 1349)
+  Rendered products/edit.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1465)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 5.3ms | ActiveRecord: 0.4ms | Allocations: 9325)
+
+
+Started PATCH "/products/1" for ::1 at 2020-05-04 13:17:17 +0530
+Processing by ProductsController#update as HTML
+  Parameters: {"authenticity_token"=>"9pboNffGy7oXTBn/DB20zCSCfD0laApAQsvg107vPf5U6lPaIXMsrnjCmao+yUP2SA/cn6WcPf8VPPn0PXElug==", "product"=>{"title"=>"Seven Mobile Apps in Seven Weeks", "description"=>"<p>\r\n<em>Native Apps, Multiple Platforms</em>\r\nAnswer the question “Can we build this for ALL the devices?” with a\r\nresounding YES. This book will help you get there with a real-world\r\nintroduction to seven platforms, whether you’re new to mobile or an\r\nexperienced developer needing to expand your options. Plus, you’ll find\r\nout which cross-platform solution makes the most sense for your needs.\r\n</p>", "image_url"=>"image1.jpg", "price"=>"1.0"}, "commit"=>"Update Product", "id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? AND "products"."id" != ? LIMIT ?[0m  [["title", "Seven Mobile Apps in Seven Weeks"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:44:in `block in update'
+Redirected to http://localhost:3000/products/1
+Completed 302 Found in 6ms (ActiveRecord: 0.4ms | Allocations: 3563)
+
+
+Started GET "/products/1" for ::1 at 2020-05-04 13:17:17 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 99)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.1ms | Allocations: 4347)
+
+
+Started GET "/products" for ::1 at 2020-05-04 13:17:22 +0530
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1646)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.2ms | Allocations: 5299)
+
+
+Started GET "/products/1" for ::1 at 2020-05-04 13:17:52 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 94)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 0.2ms | Allocations: 4336)
+
+
+Started GET "/products" for ::1 at 2020-05-04 13:17:55 +0530
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1625)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.1ms | Allocations: 5283)
+
+
+Started GET "/products/1" for ::1 at 2020-05-04 13:46:16 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 94)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.3ms | Allocations: 4992)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 10:28:38 +0530
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/vinshaku/.rvm/gems/ruby-2.6.3/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/vinshaku/.rvm/gems/ruby-2.6.3/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 19.8ms | Allocations: 315)
+Completed 200 OK in 39ms (Views: 21.4ms | ActiveRecord: 0.0ms | Allocations: 1696)
+
+
+Started GET "/products" for 127.0.0.1 at 2020-05-05 10:29:09 +0530
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (Duration: 98.1ms | Allocations: 9485)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 140ms (Views: 124.0ms | ActiveRecord: 0.6ms | Allocations: 14861)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2020-05-05 10:29:12 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 10.2ms | Allocations: 328)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 55ms (Views: 13.9ms | ActiveRecord: 0.3ms | Allocations: 5114)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2020-05-05 10:29:15 +0530
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 86.3ms | Allocations: 3209)
+  Rendered products/new.html.erb within layouts/application (Duration: 87.6ms | Allocations: 3562)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 95ms (Views: 93.5ms | ActiveRecord: 0.0ms | Allocations: 7436)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2020-05-05 10:29:18 +0530
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 3.2ms | Allocations: 1103)
+  Rendered products/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1190)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms | Allocations: 4913)
+
+
+Started GET "/store/index" for 127.0.0.1 at 2020-05-05 11:20:37 +0530
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 91)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 77ms (Views: 76.8ms | ActiveRecord: 0.0ms | Allocations: 16296)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:22:38 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 3918)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:25:10 +0530
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 5630)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 9.1ms | ActiveRecord: 0.6ms | Allocations: 11416)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:26:15 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1393)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.2ms | Allocations: 9853)
+
+
+  
+ActionView::Template::Error (Error: Invalid CSS after "    }": expected "}", was "1."
+        on line 14:6 of app/assets/stylesheets/store.scss
+>>     }
+
+   -----^
+):
+     6:   <%= csrf_meta_tags %>
+     7:   <%= csp_meta_tag %>
+     8: 
+     9:   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    10:   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11: </head>
+    12: 
+  
+app/assets/stylesheets/store.scss:14
+app/views/layouts/application.html.erb:9
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:26:26 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1439)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.2ms | Allocations: 7635)
+
+
+  
+ActionView::Template::Error (Error: Top-level selectors may not contain the parent selector "&".
+        on line 20 of app/assets/stylesheets/store.scss
+>> &::after {
+
+   ^
+):
+     6:   <%= csrf_meta_tags %>
+     7:   <%= csp_meta_tag %>
+     8: 
+     9:   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    10:   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11: </head>
+    12: 
+  
+app/assets/stylesheets/store.scss:20
+app/views/layouts/application.html.erb:9
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:27:10 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1388)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 24.3ms | ActiveRecord: 0.2ms | Allocations: 16011)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:28:57 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1389)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 16.9ms | ActiveRecord: 0.2ms | Allocations: 15582)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:29:22 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1398)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 65ms (Views: 63.6ms | ActiveRecord: 0.2ms | Allocations: 15619)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:32:25 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1636)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 0.2ms | Allocations: 10044)
+
+
+  
+ActionView::Template::Error (The asset "logo.svg" is not present in the asset pipeline.):
+    12: 
+    13: <body>
+    14:   <header class="main">
+    15:     <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
+    16:     <h1><%= @page_title %></h1>
+    17:   </header>
+    18:   <section class="content">
+  
+app/views/layouts/application.html.erb:15
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:33:45 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1636)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms | Allocations: 3929)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <!DOCTYPE html>
+<html>
+
+<head>
+  <title>Depot</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <header class="main">
+    <%= image_tag , alt: 'The Pragmatic Bookshelf' %>
+    <h1><%= @page_title %></h1>
+  </header>
+  <section class="content">
+    <nav class="side_nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/questions">Questions</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+    <main class='<%= controller.controller_name %>'>
+      <%= yield %>
+    </main>
+</body>
+
+</html>
+):
+1:    <!DOCTYPE html>
+2:    <html>
+3:    
+4:    <head>
+5:      <title>Depot</title>
+6:      <%= csrf_meta_tags %>
+7:      <%= csp_meta_tag %>
+8:    
+9:      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+10:      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+11:    </head>
+12:    
+13:    <body>
+14:      <header class="main">
+15:        <%= image_tag , alt: 'The Pragmatic Bookshelf' %>
+16:        <h1><%= @page_title %></h1>
+17:      </header>
+18:      <section class="content">
+19:        <nav class="side_nav">
+20:          <ul>
+21:            <li><a href="/">Home</a></li>
+22:            <li><a href="/questions">Questions</a></li>
+23:            <li><a href="/news">News</a></li>
+24:            <li><a href="/contact">Contact</a></li>
+25:          </ul>
+26:        </nav>
+27:        <main class='<%= controller.controller_name %>'>
+28:          <%= yield %>
+29:        </main>
+30:    </body>
+31:    
+32:    </html>
+  
+app/views/layouts/application.html.erb:15: syntax error, unexpected tLABEL, expecting '='
+app/views/layouts/application.html.erb:15: syntax error, unexpected tLABEL, expecting '='
+app/views/layouts/application.html.erb:15: syntax error, unexpected tLABEL, expecting '='
+app/views/layouts/application.html.erb:15: syntax error, unexpected tLABEL, expecting '='
+app/views/layouts/application.html.erb:15: syntax error, unexpected tLABEL, expecting '='
+app/views/layouts/application.html.erb:15: syntax error, unexpected tLABEL, expecting '='
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:33:51 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1636)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.2ms | Allocations: 6405)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:34:49 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1389)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 21.2ms | ActiveRecord: 0.2ms | Allocations: 14133)
+
+
+Started GET "/questions" for 127.0.0.1 at 2020-05-05 11:34:54 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/questions"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:34:55 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1388)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.2ms | Allocations: 5082)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:34:56 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1388)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.1ms | Allocations: 5083)
+
+
+Started GET "/products" for 127.0.0.1 at 2020-05-05 11:36:55 +0530
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2058)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.2ms | Allocations: 6335)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2020-05-05 11:36:58 +0530
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 3.5ms | Allocations: 1527)
+  Rendered products/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1871)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.0ms | Allocations: 5785)
+
+
+Started POST "/products" for 127.0.0.1 at 2020-05-05 11:37:32 +0530
+Processing by ProductsController#create as HTML
+  Parameters: {"authenticity_token"=>"jk4pUsEhwHBunXGflxg04LZf6xFIgHf9KbnpvkGWa75Tkg5J6FDuhlX2nTKfZgXeV1ctWQhOTl4ATuLR0xEyqw==", "product"=>{"title"=>"mera product he", "description"=>"nahi hai jayada kyuknki abhi socha nhi hai", "image_url"=>"image1.jpg", "price"=>"150000.0"}, "commit"=>"Create Product"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `block in create'
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "mera product he"], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30:in `block in create'
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "mera product he"], ["description", "nahi hai jayada kyuknki abhi socha nhi hai"], ["image_url", "image1.jpg"], ["price", 150000.0], ["created_at", "2020-05-05 06:07:32.766816"], ["updated_at", "2020-05-05 06:07:32.766816"]]
+  ↳ app/controllers/products_controller.rb:30:in `block in create'
+  [1m[35m (126.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/products/2
+Completed 302 Found in 135ms (ActiveRecord: 126.7ms | Allocations: 5083)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2020-05-05 11:37:32 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 314)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 0.2ms | Allocations: 4847)
+
+
+Started GET "/products" for 127.0.0.1 at 2020-05-05 11:37:34 +0530
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2233)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.2ms | Allocations: 5914)
+
+
+Started GET "/products" for 127.0.0.1 at 2020-05-05 11:40:12 +0530
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2576)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.1ms | Allocations: 7251)
+
+
+Started GET "/products" for 127.0.0.1 at 2020-05-05 11:40:13 +0530
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2241)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.2ms | Allocations: 5921)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2020-05-05 11:40:16 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 318)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.1ms | Allocations: 4715)
+
+
+Started GET "/store" for 127.0.0.1 at 2020-05-05 11:40:40 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/store"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:40:44 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 53.9ms | Allocations: 5805)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 65ms (Views: 64.2ms | ActiveRecord: 0.1ms | Allocations: 9983)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:40:50 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 2065)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.1ms | Allocations: 5757)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:40:51 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2065)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 0.1ms | Allocations: 5763)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:50:36 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 2436)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.2ms | Allocations: 7138)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:50:37 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2083)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.2ms | Allocations: 5773)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:50:38 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2084)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.2ms | Allocations: 5774)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:50:38 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2082)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.2ms | Allocations: 5774)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:50:38 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 2082)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.2ms | Allocations: 5774)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:50:38 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 2082)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.2ms | Allocations: 5771)
+
+
+Started GET "/news" for 127.0.0.1 at 2020-05-05 11:51:23 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/news"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:51:24 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 2082)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.1ms | Allocations: 5772)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:51:25 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2082)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.1ms | Allocations: 5779)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:51:26 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 2083)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.2ms | Allocations: 5773)
+
+
+Started GET "/questions" for 127.0.0.1 at 2020-05-05 11:51:27 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/questions"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2020-05-05 11:51:27 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2083)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.1ms | Allocations: 5779)
+
+
