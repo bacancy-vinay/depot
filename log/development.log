@@ -3939,3 +3939,1456 @@ Processing by StoreController#index as HTML
 Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.2ms | Allocations: 6229)
 
 
+Started GET "/" for 127.0.0.1 at 2020-05-08 18:24:13 +0530
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (14.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (3.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 202.5ms | Allocations: 12574)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 264ms (Views: 231.7ms | ActiveRecord: 4.2ms | Allocations: 20269)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:24:16 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"Es/f/5hELuzKSg+FvkzFNq1/pAJxkjiMuZkE0Pq8CIMyxfRPiAfOU9quQrZu49MtXrivI3cRyzf7e1VSPQ/6bg==", "product_id"=>"1"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[36mCart Create (0.2ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2020-05-08 12:54:16.685405"], ["updated_at", "2020-05-08 12:54:16.685405"]]
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[35m (65.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 2], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Create (0.2ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 1], ["cart_id", 2], ["created_at", "2020-05-08 12:54:16.774240"], ["updated_at", "2020-05-08 12:54:16.774240"]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (80.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/2
+Completed 302 Found in 181ms (ActiveRecord: 147.5ms | Allocations: 20688)
+
+
+Started GET "/carts/2" for 127.0.0.1 at 2020-05-08 18:24:16 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:68:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 2]]
+  ↳ app/views/carts/show.html.erb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  Rendered carts/show.html.erb within layouts/application (Duration: 13.2ms | Allocations: 1748)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 19.9ms | ActiveRecord: 0.5ms | Allocations: 6924)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:24:19 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"Es/f/5hELuzKSg+FvkzFNq1/pAJxkjiMuZkE0Pq8CIMyxfRPiAfOU9quQrZu49MtXrivI3cRyzf7e1VSPQ/6bg==", "product_id"=>"1"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 2], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Update (0.3ms)[0m  [1m[33mUPDATE "line_items" SET "quantity" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["quantity", 2], ["updated_at", "2020-05-08 12:54:19.088424"], ["id", 3]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (80.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/2
+Completed 302 Found in 95ms (ActiveRecord: 81.2ms | Allocations: 6264)
+
+
+Started GET "/carts/2" for 127.0.0.1 at 2020-05-08 18:24:19 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:68:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 2]]
+  ↳ app/views/carts/show.html.erb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  Rendered carts/show.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1376)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 7.9ms | ActiveRecord: 0.5ms | Allocations: 5944)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2020-05-08 18:24:21 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"Es/f/5hELuzKSg+FvkzFNq1/pAJxkjiMuZkE0Pq8CIMyxfRPiAfOU9quQrZu49MtXrivI3cRyzf7e1VSPQ/6bg==", "product_id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 2], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Create (0.3ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 2], ["cart_id", 2], ["created_at", "2020-05-08 12:54:21.083014"], ["updated_at", "2020-05-08 12:54:21.083014"]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (82.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/2
+Completed 302 Found in 110ms (ActiveRecord: 83.4ms | Allocations: 6292)
+
+
+Started GET "/carts/2" for 127.0.0.1 at 2020-05-08 18:24:21 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:68:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 2]]
+  ↳ app/views/carts/show.html.erb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  Rendered carts/show.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2225)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 10.6ms | ActiveRecord: 0.6ms | Allocations: 6633)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2020-05-08 18:24:23 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"Es/f/5hELuzKSg+FvkzFNq1/pAJxkjiMuZkE0Pq8CIMyxfRPiAfOU9quQrZu49MtXrivI3cRyzf7e1VSPQ/6bg==", "product_id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 2], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Update (0.2ms)[0m  [1m[33mUPDATE "line_items" SET "quantity" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["quantity", 2], ["updated_at", "2020-05-08 12:54:23.186406"], ["id", 4]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (99.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/2
+Completed 302 Found in 114ms (ActiveRecord: 99.9ms | Allocations: 6356)
+
+
+Started GET "/carts/2" for 127.0.0.1 at 2020-05-08 18:24:23 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:68:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 2]]
+  ↳ app/views/carts/show.html.erb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  Rendered carts/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2071)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 7.7ms | ActiveRecord: 0.5ms | Allocations: 6480)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-08 18:30:17 +0530
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 6546)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 0.2ms | Allocations: 12811)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:30:18 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"AkXuw8OwWHL5m/d1UWDJQ8X4ZGUyVytzPCzY3anE2XEiT8Vz0/O4zel/ukaBz99YNj9vRDTU2Mh+zolfbncrnA==", "product_id"=>"1"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 2], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Update (0.1ms)[0m  [1m[33mUPDATE "line_items" SET "quantity" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["quantity", 3], ["updated_at", "2020-05-08 13:00:18.892001"], ["id", 3]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (86.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/2
+Completed 302 Found in 107ms (ActiveRecord: 87.2ms | Allocations: 14388)
+
+
+Started GET "/carts/2" for 127.0.0.1 at 2020-05-08 18:30:18 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  Rendered carts/show.html.erb within layouts/application (Duration: 21.0ms | Allocations: 3582)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.2ms | Allocations: 5167)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2020-05-08 18:30:22 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"AkXuw8OwWHL5m/d1UWDJQ8X4ZGUyVytzPCzY3anE2XEiT8Vz0/O4zel/ukaBz99YNj9vRDTU2Mh+zolfbncrnA==", "product_id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 2], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Update (0.2ms)[0m  [1m[33mUPDATE "line_items" SET "quantity" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["quantity", 3], ["updated_at", "2020-05-08 13:00:22.241153"], ["id", 4]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (70.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/2
+Completed 302 Found in 86ms (ActiveRecord: 71.7ms | Allocations: 6229)
+
+
+Started GET "/carts/2" for 127.0.0.1 at 2020-05-08 18:30:22 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  Rendered carts/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1087)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.1ms | Allocations: 2032)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% if notice %>
+<aside id="notice"><%= notice %></aside>
+<% end %>
+<h2>Your Pragmatic Cart</h2>
+<ul>
+  <% @cart.line_items.each do |item| %>
+  <li><%= item.quantity %> &times; <%= item.product.title %></li>
+  <% end %>
+</ul>
+<%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm : 'Are you sure?' } %>
+):
+1:    <% if notice %>
+2:    <aside id="notice"><%= notice %></aside>
+3:    <% end %>
+4:    <h2>Your Pragmatic Cart</h2>
+5:    <ul>
+6:      <% @cart.line_items.each do |item| %>
+7:      <li><%= item.quantity %> &times; <%= item.product.title %></li>
+8:      <% end %>
+9:    </ul>
+10:    <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm : 'Are you sure?' } %>
+  
+app/views/carts/show.html.erb:10: syntax error, unexpected ':', expecting =>
+app/views/carts/show.html.erb:10: syntax error, unexpected '}', expecting ')'
+app/views/carts/show.html.erb:12: syntax error, unexpected end, expecting ')'
+app/views/carts/show.html.erb:10: syntax error, unexpected ':', expecting =>
+app/views/carts/show.html.erb:10: syntax error, unexpected '}', expecting ')'
+app/views/carts/show.html.erb:12: syntax error, unexpected end, expecting ')'
+app/views/carts/show.html.erb:10: syntax error, unexpected ':', expecting =>
+app/views/carts/show.html.erb:10: syntax error, unexpected '}', expecting ')'
+app/views/carts/show.html.erb:12: syntax error, unexpected end, expecting ')'
+app/views/carts/show.html.erb:10: syntax error, unexpected ':', expecting =>
+app/views/carts/show.html.erb:10: syntax error, unexpected '}', expecting ')'
+app/views/carts/show.html.erb:12: syntax error, unexpected end, expecting ')'
+app/views/carts/show.html.erb:10: syntax error, unexpected ':', expecting =>
+app/views/carts/show.html.erb:10: syntax error, unexpected '}', expecting ')'
+app/views/carts/show.html.erb:12: syntax error, unexpected end, expecting ')'
+app/views/carts/show.html.erb:10: syntax error, unexpected ':', expecting =>
+app/views/carts/show.html.erb:10: syntax error, unexpected '}', expecting ')'
+app/views/carts/show.html.erb:12: syntax error, unexpected end, expecting ')'
+Started GET "/carts/2" for 127.0.0.1 at 2020-05-08 18:31:13 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 2]]
+  ↳ app/views/carts/show.html.erb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  Rendered carts/show.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2640)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 15.1ms | ActiveRecord: 0.6ms | Allocations: 8133)
+
+
+Started DELETE "/carts/2" for 127.0.0.1 at 2020-05-08 18:31:19 +0530
+Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"bh5BP4oYi/LUxCCc3V54UzZtvIsm2TcjM/9pt2+CkcVOFGqPmltrTcQgba8N8W5Ixaq3qiBaxJhxHTg1qDFjKA==", "id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 2]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Destroy (0.2ms)[0m  [1m[31mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Destroy (0.2ms)[0m  [1m[31mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mCart Destroy (0.1ms)[0m  [1m[31mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[35m (73.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+Redirected to http://localhost:3000/carts
+Completed 302 Found in 85ms (ActiveRecord: 74.1ms | Allocations: 6303)
+
+
+Started GET "/carts" for 127.0.0.1 at 2020-05-08 18:31:19 +0530
+Processing by CartsController#index as HTML
+  Rendering carts/index.html.erb within layouts/application
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ app/views/carts/index.html.erb:13
+  Rendered carts/index.html.erb within layouts/application (Duration: 11.6ms | Allocations: 1138)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 18.3ms | ActiveRecord: 0.3ms | Allocations: 5188)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-08 18:31:22 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2739)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.1ms | Allocations: 7147)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:31:23 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"hk0QG5kDs18DalzqdjKSw8EiECymKQzN491U78umu9aF+K+o40jpdJZYolMiGJ5wYRcZ470UgbJXUsHA1yzLRQ==", "product_id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[36mCart Create (0.5ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2020-05-08 13:01:23.693171"], ["updated_at", "2020-05-08 13:01:23.693171"]]
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[35m (55.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 3], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Create (0.2ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 1], ["cart_id", 3], ["created_at", "2020-05-08 13:01:23.761992"], ["updated_at", "2020-05-08 13:01:23.761992"]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (90.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/3
+Completed 302 Found in 167ms (ActiveRecord: 146.8ms | Allocations: 9409)
+
+
+Started GET "/carts/3" for 127.0.0.1 at 2020-05-08 18:31:23 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 3]]
+  ↳ app/views/carts/show.html.erb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  Rendered carts/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1544)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 13.4ms | ActiveRecord: 0.3ms | Allocations: 5958)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:34:39 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"hk0QG5kDs18DalzqdjKSw8EiECymKQzN491U78umu9aF+K+o40jpdJZYolMiGJ5wYRcZ470UgbJXUsHA1yzLRQ==", "product_id"=>"1"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 3], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Update (0.3ms)[0m  [1m[33mUPDATE "line_items" SET "quantity" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["quantity", 2], ["updated_at", "2020-05-08 13:04:39.342985"], ["id", 3]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (57.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/3
+Completed 302 Found in 73ms (ActiveRecord: 58.4ms | Allocations: 6230)
+
+
+Started GET "/carts/3" for 127.0.0.1 at 2020-05-08 18:34:39 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 3]]
+  ↳ app/views/carts/show.html.erb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  Rendered carts/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1535)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.3ms | Allocations: 5943)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2020-05-08 18:34:41 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"NwvyNsUKcb6n8Q5GaMlvkgvw71aHcomSTwdHQBOGMwM0vk2Fv0ErlTLD8P8842Mhq8XmmZxPBO37iNJvDwxDkA==", "product_id"=>"2"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 3], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Create (0.2ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 2], ["cart_id", 3], ["created_at", "2020-05-08 13:04:41.607694"], ["updated_at", "2020-05-08 13:04:41.607694"]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (104.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/3
+Completed 302 Found in 114ms (ActiveRecord: 105.0ms | Allocations: 6378)
+
+
+Started GET "/carts/3" for 127.0.0.1 at 2020-05-08 18:34:41 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 3]]
+  ↳ app/views/carts/show.html.erb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  Rendered carts/show.html.erb within layouts/application (Duration: 7.3ms | Allocations: 2231)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 0.7ms | Allocations: 6636)
+
+
+Started GET "/carts/3" for 127.0.0.1 at 2020-05-08 18:34:43 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 3]]
+  ↳ app/views/carts/show.html.erb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  Rendered carts/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2226)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 7.0ms | ActiveRecord: 0.4ms | Allocations: 6621)
+
+
+Started GET "/carts/3" for 127.0.0.1 at 2020-05-08 18:34:44 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 3]]
+  ↳ app/views/carts/show.html.erb:6
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  Rendered carts/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2227)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 11.7ms | ActiveRecord: 0.4ms | Allocations: 6622)
+
+
+Started DELETE "/carts/3" for 127.0.0.1 at 2020-05-08 18:34:48 +0530
+Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"vnRaBdEPVLwX36eBJM67lrsmVVPEf7wpmCMKd/o3y5eefnG1wUy0Awc76rL0Ya2NSOFecsL8T5LawVv1PYQ5eg==", "id"=>"3"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 3]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Destroy (0.2ms)[0m  [1m[31mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Destroy (0.1ms)[0m  [1m[31mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mCart Destroy (0.1ms)[0m  [1m[31mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[35m (73.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+Redirected to http://localhost:3000/carts
+Completed 302 Found in 82ms (ActiveRecord: 73.7ms | Allocations: 6248)
+
+
+Started GET "/carts" for 127.0.0.1 at 2020-05-08 18:34:48 +0530
+Processing by CartsController#index as HTML
+  Rendering carts/index.html.erb within layouts/application
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ app/views/carts/index.html.erb:13
+  Rendered carts/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 724)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.1ms | Allocations: 4628)
+
+
+Started GET "/carts/1" for 127.0.0.1 at 2020-05-08 18:34:50 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 1]]
+  ↳ app/views/carts/show.html.erb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  Rendered carts/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2226)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 10.2ms | ActiveRecord: 0.5ms | Allocations: 6613)
+
+
+Started DELETE "/carts/1" for 127.0.0.1 at 2020-05-08 18:34:55 +0530
+Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"1u+HVxg5MJM7OLr0QjPoLflwL8iQzZtX6/YmJ9ohzyR7tTH+xhBTclMb+HO2dLmaysLirzFYkNtm6drNfgsKMw==", "id"=>"1"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+Redirected to http://localhost:3000/carts
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms | Allocations: 885)
+
+
+Started GET "/carts" for 127.0.0.1 at 2020-05-08 18:34:55 +0530
+Processing by CartsController#index as HTML
+  Rendering carts/index.html.erb within layouts/application
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ app/views/carts/index.html.erb:13
+  Rendered carts/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 722)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.1ms | Allocations: 4626)
+
+
+Started GET "/carts/1" for 127.0.0.1 at 2020-05-08 18:34:56 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 1]]
+  ↳ app/views/carts/show.html.erb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  Rendered carts/show.html.erb within layouts/application (Duration: 5.1ms | Allocations: 2226)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.5ms | Allocations: 6616)
+
+
+Started DELETE "/carts/1" for 127.0.0.1 at 2020-05-08 18:34:58 +0530
+Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0ZL+toqwLjSLnN1cbdseanPimkJd1ZOyQVYRGGsPQ0x8yEgfVJlN1eO/n9uZnE/dQFBXJfxAmD7MSe3yzyWGWw==", "id"=>"1"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+Redirected to http://localhost:3000/carts
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 887)
+
+
+Started GET "/carts" for 127.0.0.1 at 2020-05-08 18:34:58 +0530
+Processing by CartsController#index as HTML
+  Rendering carts/index.html.erb within layouts/application
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ app/views/carts/index.html.erb:13
+  Rendered carts/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 722)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.1ms | Allocations: 4630)
+
+
+Started GET "/carts/1/edit" for 127.0.0.1 at 2020-05-08 18:34:59 +0530
+Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/edit.html.erb within layouts/application
+  Rendered carts/_form.html.erb (Duration: 9.4ms | Allocations: 695)
+  Rendered carts/edit.html.erb within layouts/application (Duration: 28.3ms | Allocations: 1097)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 44ms (Views: 34.1ms | ActiveRecord: 0.1ms | Allocations: 5637)
+
+
+Started DELETE "/carts/1" for 127.0.0.1 at 2020-05-08 18:35:02 +0530
+Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xlSAtYda88kfmG37K7VBueahy172iG7XryoGzFJIoWLmXqsFlxkTdg98IMj7GleiFWbAf/ALnWztyFdOlftTjw==", "id"=>"1"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+Redirected to http://localhost:3000/carts
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 868)
+
+
+Started GET "/carts" for 127.0.0.1 at 2020-05-08 18:35:02 +0530
+Processing by CartsController#index as HTML
+  Rendering carts/index.html.erb within layouts/application
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ app/views/carts/index.html.erb:13
+  Rendered carts/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 725)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.2ms | Allocations: 4628)
+
+
+Started GET "/carts/1" for 127.0.0.1 at 2020-05-08 18:35:04 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 1]]
+  ↳ app/views/carts/show.html.erb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:7
+  Rendered carts/show.html.erb within layouts/application (Duration: 6.9ms | Allocations: 2226)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.6ms | Allocations: 6623)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-08 18:35:09 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 2384)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 12.3ms | ActiveRecord: 0.2ms | Allocations: 6216)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-08 18:36:46 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2721)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.1ms | Allocations: 7565)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:36:47 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"SC18ONW1ydL8s/isNcq1B9gILZPCqgz78EpzJ2PTBhpoJ1eIxfYpbexXtZ/lZaMcK88mssQp/0CyqCKlpGD09w==", "product_id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[36mCart Create (0.3ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2020-05-08 13:06:47.671283"], ["updated_at", "2020-05-08 13:06:47.671283"]]
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[35m (106.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 4], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Create (0.3ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 1], ["cart_id", 4], ["created_at", "2020-05-08 13:06:47.799255"], ["updated_at", "2020-05-08 13:06:47.799255"]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (65.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/4
+Completed 302 Found in 201ms (ActiveRecord: 173.2ms | Allocations: 9183)
+
+
+Started GET "/carts/4" for 127.0.0.1 at 2020-05-08 18:36:47 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 4]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:10
+  Rendered carts/show.html.erb within layouts/application (Duration: 9.4ms | Allocations: 4061)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.3ms | Allocations: 5804)
+
+
+  
+ActionView::Template::Error (undefined method `total_price' for #<LineItem:0x000056227dd09710>):
+     8:     <tr>
+     9:       <td class="quantity"><%= line_item.quantity %></td>
+    10:       <td><%= line_item.product.title %></td>
+    11:       <td class="price"><%= number_to_currency(line_item.total_price) %></td>
+    12:     </tr>
+    13:     <% end %>
+    14:     <tfoot>
+  
+app/views/carts/show.html.erb:11
+app/views/carts/show.html.erb:7
+Started GET "/carts/4" for 127.0.0.1 at 2020-05-08 18:39:28 +0530
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 4]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:10
+  Rendered carts/show.html.erb within layouts/application (Duration: 20.2ms | Allocations: 13317)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 129ms (Views: 123.4ms | ActiveRecord: 1.4ms | Allocations: 36569)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:39:32 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"SC18ONW1ydL8s/isNcq1B9gILZPCqgz78EpzJ2PTBhpoJ1eIxfYpbexXtZ/lZaMcK88mssQp/0CyqCKlpGD09w==", "product_id"=>"1"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 4], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Update (0.3ms)[0m  [1m[33mUPDATE "line_items" SET "quantity" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["quantity", 2], ["updated_at", "2020-05-08 13:09:32.754085"], ["id", 3]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (68.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/4
+Completed 302 Found in 86ms (ActiveRecord: 69.3ms | Allocations: 6483)
+
+
+Started GET "/carts/4" for 127.0.0.1 at 2020-05-08 18:39:32 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 4]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:10
+  Rendered carts/show.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1775)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.3ms | Allocations: 6210)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2020-05-08 18:39:35 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"SC18ONW1ydL8s/isNcq1B9gILZPCqgz78EpzJ2PTBhpoJ1eIxfYpbexXtZ/lZaMcK88mssQp/0CyqCKlpGD09w==", "product_id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 4], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Create (0.2ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 2], ["cart_id", 4], ["created_at", "2020-05-08 13:09:35.563513"], ["updated_at", "2020-05-08 13:09:35.563513"]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (95.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/4
+Completed 302 Found in 118ms (ActiveRecord: 95.8ms | Allocations: 6273)
+
+
+Started GET "/carts/4" for 127.0.0.1 at 2020-05-08 18:39:35 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 4]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:10
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:10
+  Rendered carts/show.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2605)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 9.2ms | ActiveRecord: 0.5ms | Allocations: 7038)
+
+
+Started DELETE "/carts/4" for 127.0.0.1 at 2020-05-08 18:39:49 +0530
+Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"XkHs2u22Jd84FrlEsMJ/uURVVdfG+GRCndKhFN8PLKN+S8dq/fXFYCjy9HdgbWmit5Je9sB7l/nfMPCWGLzeTg==", "id"=>"4"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 4]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Destroy (0.2ms)[0m  [1m[31mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Destroy (0.1ms)[0m  [1m[31mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mCart Destroy (0.1ms)[0m  [1m[31mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[35m (68.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+Redirected to http://localhost:3000/carts
+Completed 302 Found in 78ms (ActiveRecord: 69.3ms | Allocations: 6270)
+
+
+Started GET "/carts" for 127.0.0.1 at 2020-05-08 18:39:49 +0530
+Processing by CartsController#index as HTML
+  Rendering carts/index.html.erb within layouts/application
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ app/views/carts/index.html.erb:13
+  Rendered carts/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 985)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.2ms | Allocations: 5046)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-08 18:39:52 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2407)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.3ms | Allocations: 6434)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:39:54 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"QT+lOg52+msu+nf96cK0TReu67E5KqukEhfrQBzxjmlCihqJdD2gQLvIiUS96Lj+t5vifiIXJtummH5vAHv++g==", "product_id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[36mCart Create (0.3ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2020-05-08 13:09:54.235228"], ["updated_at", "2020-05-08 13:09:54.235228"]]
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[35m (68.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 5], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Create (0.2ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 1], ["cart_id", 5], ["created_at", "2020-05-08 13:09:54.318164"], ["updated_at", "2020-05-08 13:09:54.318164"]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (73.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/5
+Completed 302 Found in 162ms (ActiveRecord: 142.8ms | Allocations: 9381)
+
+
+Started GET "/carts/5" for 127.0.0.1 at 2020-05-08 18:39:54 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 5]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:10
+  Rendered carts/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1775)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 14.8ms | ActiveRecord: 0.3ms | Allocations: 6209)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2020-05-08 18:39:56 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"AuXbcOGlRInUh5bAY5G5+hI2dGJ4ra7moM5zovfx90cBUGTDm+4eokG1aHk3u7VJsgN9rWOQI5kUQeaN63uH1A==", "product_id"=>"2"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 5], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Create (0.1ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 2], ["cart_id", 5], ["created_at", "2020-05-08 13:09:56.994266"], ["updated_at", "2020-05-08 13:09:56.994266"]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (105.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/5
+Completed 302 Found in 119ms (ActiveRecord: 106.4ms | Allocations: 6371)
+
+
+Started GET "/carts/5" for 127.0.0.1 at 2020-05-08 18:39:57 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 5]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:10
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:10
+  Rendered carts/show.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2605)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 7.7ms | ActiveRecord: 0.4ms | Allocations: 7039)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-08 18:41:56 +0530
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 12.9ms | Allocations: 6403)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 0.7ms | Allocations: 12041)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:41:57 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"bbGagSzOsV3bpNH1vkO+EBZdp1WAm7zmUtS8g0a+yxtNu7ExPI1R4stAnMZu7KgL5ZqsdIYYT10QNu0BgQ059g==", "product_id"=>"1"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 5], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Update (0.2ms)[0m  [1m[33mUPDATE "line_items" SET "quantity" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["quantity", 2], ["updated_at", "2020-05-08 13:11:57.506910"], ["id", 3]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (88.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/5
+Completed 302 Found in 124ms (ActiveRecord: 90.6ms | Allocations: 14956)
+
+
+Started GET "/carts/5" for 127.0.0.1 at 2020-05-08 18:41:57 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 5]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:10
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:10
+  Rendered carts/show.html.erb within layouts/application (Duration: 9.2ms | Allocations: 2776)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 18.9ms | ActiveRecord: 0.5ms | Allocations: 7423)
+
+
+Started DELETE "/carts/5" for 127.0.0.1 at 2020-05-08 18:41:59 +0530
+Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"K34hWmeG0jE8dCpk3dKoCUJkZFgj09J8v+kasFayRSkLdArqd8UyjiyQZ1cNfb4SsaNveSVQIcf9C0sykQG3xA==", "id"=>"5"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 5]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Destroy (1.2ms)[0m  [1m[31mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Destroy (0.1ms)[0m  [1m[31mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mCart Destroy (0.1ms)[0m  [1m[31mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[35m (59.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+Redirected to http://localhost:3000/carts
+Completed 302 Found in 84ms (ActiveRecord: 61.3ms | Allocations: 6278)
+
+
+Started GET "/carts" for 127.0.0.1 at 2020-05-08 18:41:59 +0530
+Processing by CartsController#index as HTML
+  Rendering carts/index.html.erb within layouts/application
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ app/views/carts/index.html.erb:13
+  Rendered carts/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 736)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.1ms | Allocations: 4824)
+
+
+Started GET "/carts/5" for 127.0.0.1 at 2020-05-08 18:56:48 +0530
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+Attempt to access invalid cart 5
+Redirected to http://localhost:3000/store/index
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 2266)
+
+
+Started GET "/store/index" for 127.0.0.1 at 2020-05-08 18:56:48 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 16.6ms | Allocations: 6579)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 21.3ms | ActiveRecord: 0.2ms | Allocations: 12645)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:56:51 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"Gr6lt6Yk4+Ts/jZ+Z14sPrDJJejUlOSelxTUkWmsP6s6tI4HtmcDW/wae0238TolQw4uydIXFyXV9oUTrh/NRg==", "product_id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2020-05-08 13:26:51.517971"], ["updated_at", "2020-05-08 13:26:51.517971"]]
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[35m (94.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 6], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Create (0.2ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 1], ["cart_id", 6], ["created_at", "2020-05-08 13:26:51.636582"], ["updated_at", "2020-05-08 13:26:51.636582"]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (72.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/6
+Completed 302 Found in 201ms (ActiveRecord: 168.7ms | Allocations: 16534)
+
+
+Started GET "/carts/6" for 127.0.0.1 at 2020-05-08 18:56:51 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 6]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 1.9ms | Allocations: 974)
+  Rendered carts/show.html.erb within layouts/application (Duration: 5.8ms | Allocations: 2653)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 10.0ms | ActiveRecord: 0.4ms | Allocations: 7678)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2020-05-08 18:56:54 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"Gr6lt6Yk4+Ts/jZ+Z14sPrDJJejUlOSelxTUkWmsP6s6tI4HtmcDW/wae0238TolQw4uydIXFyXV9oUTrh/NRg==", "product_id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 6], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Create (0.1ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 2], ["cart_id", 6], ["created_at", "2020-05-08 13:26:54.391676"], ["updated_at", "2020-05-08 13:26:54.391676"]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (90.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/6
+Completed 302 Found in 102ms (ActiveRecord: 91.2ms | Allocations: 6262)
+
+
+Started GET "/carts/6" for 127.0.0.1 at 2020-05-08 18:56:54 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 6]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  Rendered collection of line_items/_line_item.html.erb [2 times] (Duration: 2.7ms | Allocations: 1664)
+  Rendered carts/show.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2810)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.4ms | Allocations: 7392)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:56:57 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"Gr6lt6Yk4+Ts/jZ+Z14sPrDJJejUlOSelxTUkWmsP6s6tI4HtmcDW/wae0238TolQw4uydIXFyXV9oUTrh/NRg==", "product_id"=>"1"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 6], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Update (0.2ms)[0m  [1m[33mUPDATE "line_items" SET "quantity" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["quantity", 2], ["updated_at", "2020-05-08 13:26:57.165522"], ["id", 3]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (57.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/6
+Completed 302 Found in 71ms (ActiveRecord: 58.6ms | Allocations: 6196)
+
+
+Started GET "/carts/6" for 127.0.0.1 at 2020-05-08 18:56:57 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 6]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  Rendered collection of line_items/_line_item.html.erb [2 times] (Duration: 2.4ms | Allocations: 1664)
+  Rendered carts/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2809)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.4ms | Allocations: 7244)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2020-05-08 18:56:59 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"Gr6lt6Yk4+Ts/jZ+Z14sPrDJJejUlOSelxTUkWmsP6s6tI4HtmcDW/wae0238TolQw4uydIXFyXV9oUTrh/NRg==", "product_id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 6], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Update (0.3ms)[0m  [1m[33mUPDATE "line_items" SET "quantity" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["quantity", 2], ["updated_at", "2020-05-08 13:26:59.784528"], ["id", 4]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (70.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/6
+Completed 302 Found in 87ms (ActiveRecord: 71.9ms | Allocations: 6198)
+
+
+Started GET "/carts/6" for 127.0.0.1 at 2020-05-08 18:56:59 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 6]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  Rendered collection of line_items/_line_item.html.erb [2 times] (Duration: 2.4ms | Allocations: 1664)
+  Rendered carts/show.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2809)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.3ms | Allocations: 7242)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:57:02 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"Gr6lt6Yk4+Ts/jZ+Z14sPrDJJejUlOSelxTUkWmsP6s6tI4HtmcDW/wae0238TolQw4uydIXFyXV9oUTrh/NRg==", "product_id"=>"1"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 6], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Update (0.3ms)[0m  [1m[33mUPDATE "line_items" SET "quantity" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["quantity", 3], ["updated_at", "2020-05-08 13:27:02.102090"], ["id", 3]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (87.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/6
+Completed 302 Found in 101ms (ActiveRecord: 88.0ms | Allocations: 6194)
+
+
+Started GET "/carts/6" for 127.0.0.1 at 2020-05-08 18:57:02 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 6]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  Rendered collection of line_items/_line_item.html.erb [2 times] (Duration: 2.3ms | Allocations: 1664)
+  Rendered carts/show.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2962)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 8.9ms | ActiveRecord: 0.4ms | Allocations: 7399)
+
+
+Started DELETE "/carts/6" for 127.0.0.1 at 2020-05-08 18:57:04 +0530
+Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"em0VyWZWF3ND9HW6XYCY8LkCrnIDCd4UYMQyeg55YWdaZz55dhX3zFMQOImNL47rSsWlUwWKLa8iJmP4ycqTig==", "id"=>"6"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 6]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Destroy (0.3ms)[0m  [1m[31mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Destroy (0.1ms)[0m  [1m[31mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mCart Destroy (0.1ms)[0m  [1m[31mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[35m (83.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+Redirected to http://localhost:3000/carts
+Completed 302 Found in 96ms (ActiveRecord: 84.3ms | Allocations: 6270)
+
+
+Started GET "/carts" for 127.0.0.1 at 2020-05-08 18:57:04 +0530
+Processing by CartsController#index as HTML
+  Rendering carts/index.html.erb within layouts/application
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ app/views/carts/index.html.erb:13
+  Rendered carts/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 970)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.3ms | Allocations: 5190)
+
+
+Started DELETE "/carts/6" for 127.0.0.1 at 2020-05-08 18:57:10 +0530
+Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"em0VyWZWF3ND9HW6XYCY8LkCrnIDCd4UYMQyeg55YWdaZz55dhX3zFMQOImNL47rSsWlUwWKLa8iJmP4ycqTig==", "id"=>"6"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+Attempt to access invalid cart 6
+Redirected to http://localhost:3000/store/index
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 1119)
+
+
+Started GET "/store/index" for 127.0.0.1 at 2020-05-08 18:57:10 +0530
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2386)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.1ms | Allocations: 6256)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:57:11 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"dWUP6oRDP6gPAN48aRRSB8TBcTkP9JcoHchMFGM06elVbyRalADfFx/kkw+5u0QcNwZ6GAl3ZJNfKh2WpIcbBA==", "product_id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[36mCart Create (0.3ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2020-05-08 13:27:11.418060"], ["updated_at", "2020-05-08 13:27:11.418060"]]
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[35m (108.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:7:in `rescue in set_cart'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 7], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Create (0.4ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 1], ["cart_id", 7], ["created_at", "2020-05-08 13:27:11.552205"], ["updated_at", "2020-05-08 13:27:11.552205"]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (61.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/7
+Completed 302 Found in 203ms (ActiveRecord: 171.1ms | Allocations: 9184)
+
+
+Started GET "/carts/7" for 127.0.0.1 at 2020-05-08 18:57:11 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 7]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 1.4ms | Allocations: 831)
+  Rendered carts/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1953)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.2ms | Allocations: 6386)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2020-05-08 18:57:14 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"dWUP6oRDP6gPAN48aRRSB8TBcTkP9JcoHchMFGM06elVbyRalADfFx/kkw+5u0QcNwZ6GAl3ZJNfKh2WpIcbBA==", "product_id"=>"2"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 7], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Create (0.3ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 2], ["cart_id", 7], ["created_at", "2020-05-08 13:27:14.875720"], ["updated_at", "2020-05-08 13:27:14.875720"]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (82.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/7
+Completed 302 Found in 96ms (ActiveRecord: 82.9ms | Allocations: 6257)
+
+
+Started GET "/carts/7" for 127.0.0.1 at 2020-05-08 18:57:14 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 7]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  Rendered collection of line_items/_line_item.html.erb [2 times] (Duration: 2.8ms | Allocations: 1664)
+  Rendered carts/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2809)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 8.5ms | ActiveRecord: 0.4ms | Allocations: 7391)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2020-05-08 18:57:17 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"dWUP6oRDP6gPAN48aRRSB8TBcTkP9JcoHchMFGM06elVbyRalADfFx/kkw+5u0QcNwZ6GAl3ZJNfKh2WpIcbBA==", "product_id"=>"1"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 7], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Update (0.4ms)[0m  [1m[33mUPDATE "line_items" SET "quantity" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["quantity", 2], ["updated_at", "2020-05-08 13:27:17.685316"], ["id", 3]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (77.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/7
+Completed 302 Found in 93ms (ActiveRecord: 78.5ms | Allocations: 6201)
+
+
+Started GET "/carts/7" for 127.0.0.1 at 2020-05-08 18:57:17 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 7]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  Rendered collection of line_items/_line_item.html.erb [2 times] (Duration: 2.5ms | Allocations: 1664)
+  Rendered carts/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2809)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.4ms | Allocations: 7245)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2020-05-08 18:57:20 +0530
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"dWUP6oRDP6gPAN48aRRSB8TBcTkP9JcoHchMFGM06elVbyRalADfFx/kkw+5u0QcNwZ6GAl3ZJNfKh2WpIcbBA==", "product_id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:5:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:29:in `create'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 7], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:7:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[36mLineItem Update (0.2ms)[0m  [1m[33mUPDATE "line_items" SET "quantity" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["quantity", 2], ["updated_at", "2020-05-08 13:27:20.054506"], ["id", 4]]
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+  [1m[35m (68.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/carts/7
+Completed 302 Found in 82ms (ActiveRecord: 69.1ms | Allocations: 6201)
+
+
+Started GET "/carts/7" for 127.0.0.1 at 2020-05-08 18:57:20 +0530
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 7]]
+  ↳ app/views/carts/show.html.erb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:3
+  Rendered collection of line_items/_line_item.html.erb [2 times] (Duration: 2.3ms | Allocations: 1664)
+  Rendered carts/show.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2809)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.3ms | Allocations: 7235)
+
+
+Started DELETE "/carts/7" for 127.0.0.1 at 2020-05-08 18:57:26 +0530
+Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"pyLNM6s1jhzuQ/0TzaP2/sZkQOfWC2T+xHqqHjmsHFaHKOaDu3Zuo/6nsCAdDODlNaNLxtCIl0WGmPuc/h/uuw==", "id"=>"7"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:69:in `set_cart'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 7]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Destroy (0.2ms)[0m  [1m[31mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mLineItem Destroy (0.1ms)[0m  [1m[31mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[36mCart Destroy (0.2ms)[0m  [1m[31mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+  [1m[35m (58.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/carts_controller.rb:57:in `destroy'
+Redirected to http://localhost:3000/carts
+Completed 302 Found in 70ms (ActiveRecord: 59.0ms | Allocations: 6250)
+
+
+Started GET "/carts" for 127.0.0.1 at 2020-05-08 18:57:26 +0530
+Processing by CartsController#index as HTML
+  Rendering carts/index.html.erb within layouts/application
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ app/views/carts/index.html.erb:13
+  Rendered carts/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 722)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.1ms | Allocations: 4649)
+
+
